@@ -1,71 +1,93 @@
 /*************************************************************************
-                           Xxx  -  description
+                           LectureLog  -  description
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 21/01/2019
+    copyright            : (C) Mathéo ATCHE et Andréa CROC
+    e-mail               : matheo.atche@insa-lyon.fr et andrea.croc@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <LectureLog> (fichier LectureLog.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
 //-------------------------------------------------------- Include système
+#include<fstream>
 #include <iostream>
 using namespace std;
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "LectureLog.h"
 
 //------------------------------------------------------------- Constantes
-
+const char SEP = ',';
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
+void LectureLog:: LireLigneFichierLog ( ifstream & fic )
 // Algorithme :
 //
-//{
-//} //----- Fin de Méthode
+{
+	string tmp;
+	getline(fic,ligneFichier.ip,' ');
+	getline(fic,tmp,'[');
+	getline(fic,ligneFichier.date,' ');
+	getline(fic,tmp,'"');
+	getline(fic,ligneFichier.typeAction,' ');
+	getline(fic,ligneFichier.url,' ');
+	getline(fic,tmp,'"');
+	getline(fic,tmp,'"');
+	getline(fic,ligneFichier.referer,'"');
+	getline(fic,tmp);
+	
+	
+} //----- Fin de LireLigneFichierLog
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
+ostream & operator << ( ostream & os, const LectureLog & lect )
 // Algorithme :
 //
 {
-} //----- Fin de operator =
+	os<<lect.ligneFichier.ip<<SEP<<lect.ligneFichier.date<<SEP<<lect.ligneFichier.typeAction;
+	os<<SEP<<lect.ligneFichier.url<<SEP<<lect.ligneFichier.referer<<endl;
+	return os;
+     
+} //----- Fin de operator <<
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+//LectureLog::LectureLog ( const LectureLog & unLectureLog )
 // Algorithme :
 //
-{
+/*{
 #ifdef MAP
     cout << "Appel au constructeur de copie de <Xxx>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
+} //----- Fin de LectureLog (constructeur de copie)*/
 
 
-Xxx::Xxx ( )
+LectureLog::LectureLog (Ligne l)
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
-#endif
-} //----- Fin de Xxx
+	ligneFichier = l;
+
+	#ifdef MAP
+	    cout << "Appel au constructeur de <LectureLog>" << endl;
+	#endif
+
+	
+} //----- Fin de LectureLog
 
 
-Xxx::~Xxx ( )
+LectureLog::~LectureLog ( )
 // Algorithme :
 //
 {
-#ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
-#endif
-} //----- Fin de ~Xxx
+	#ifdef MAP
+	    cout << "Appel au destructeur de <LectureLog>" << endl;
+	#endif
+} //----- Fin de ~LectureLog
 
 
 //------------------------------------------------------------------ PRIVE

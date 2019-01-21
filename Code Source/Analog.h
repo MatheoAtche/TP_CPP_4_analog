@@ -1,35 +1,34 @@
 /*************************************************************************
-                           AnalyseLog  -  description
+                           Xxx  -  description
                              -------------------
-    début                : 21/01/2019
-    copyright            : (C) Mathéo ATCHE et Andréa CROC
-    e-mail               : matheo.atche@insa-lyon.fr et andrea.croc@insa-lyon.fr
+    début                : $DATE$
+    copyright            : (C) $YEAR$ par $AUTHOR$
+    e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Interface de la classe <AnalyseLog> (fichier AnalyseLog.h) ----------------
-#if ! defined ( ANALYSELOG_H )
-#define ANALYSELOG_H
+//---------- Interface de la classe <Xxx> (fichier Xxx.h) ----------------
+#if ! defined ( XXX_H )
+#define XXX_H
 
 //--------------------------------------------------- Interfaces utilisées
-#include <map>
-#include<fstream>
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
 
 //------------------------------------------------------------------------
-// Rôle de la classe <AnalyseLog>
+// Rôle de la classe <Xxx>
 //
 //
 //------------------------------------------------------------------------
 
-class AnalyseLog 
+class Xxx : public Ancetre
 {
 //----------------------------------------------------------------- PUBLIC
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    void RemplirMap (bool e, bool t,int heure);
+    // type Méthode ( liste des paramètres );
     // Mode d'emploi :
     //
     // Contrat :
@@ -37,7 +36,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    //AnalyseLog & operator = ( const AnalyseLog & unAnalyseLog );
+    Xxx & operator = ( const Xxx & unXxx );
     // Mode d'emploi :
     //
     // Contrat :
@@ -45,19 +44,19 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    //AnalyseLog ( const AnalyseLog & unAnalyseLog );
+    Xxx ( const Xxx & unXxx );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    AnalyseLog (ifstream & fic, bool g, bool e, bool t, string nomFic,int heure);
+    Xxx ( );
     // Mode d'emploi :
     //
     // Contrat :
     //
 
-    virtual ~AnalyseLog ( );
+    virtual ~Xxx ( );
     // Mode d'emploi :
     //
     // Contrat :
@@ -70,12 +69,9 @@ protected:
 
 //----------------------------------------------------- Attributs protégés
 
-	ifstream file;
-	typedef map<string,pair<map<string,int>,int> StructGraphe;
-	StructGraphe graphe;
 };
 
-//-------------------------------- Autres définitions dépendantes de <AnalyseLog>
+//-------------------------------- Autres définitions dépendantes de <Xxx>
 
-#endif // ANALYSELOG_H
+#endif // XXX_H
 

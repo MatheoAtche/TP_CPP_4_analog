@@ -7,10 +7,11 @@
 *************************************************************************/
 
 //---------- Interface de la classe <LectureLog> (fichier LectureLog.h) ----------------
-#if ! defined ( LECTRURELOG_H )
+#if ! defined ( LECTURELOG_H )
 #define LECTURELOG_H
 
 //--------------------------------------------------- Interfaces utilisées
+#include<string>
 
 //------------------------------------------------------------- Constantes
 
@@ -21,6 +22,19 @@
 //
 //
 //------------------------------------------------------------------------
+struct Ligne
+{
+	string ip;
+	string date;
+	string typeAction;
+	string url;
+	string referer;
+	Ligne(string i="", string d="", string ta="", string u="",string r="")
+		:ip(i),date(d),typeAction(ta),url(u),referer(r)
+	{}
+};
+
+class AnalyseLog;
 
 class LectureLog 
 {
@@ -28,7 +42,11 @@ class LectureLog
 
 public:
 //----------------------------------------------------- Méthodes publiques
-    // type Méthode ( liste des paramètres );
+
+    friend ostream & operator <<(ostream & os,const LectureLog & lect);
+    friend class AnalyseLog;
+
+    void LireLigneFichierLog ( ifstream & fic );
     // Mode d'emploi :
     //
     // Contrat :
@@ -36,7 +54,7 @@ public:
 
 
 //------------------------------------------------- Surcharge d'opérateurs
-    LectureLog & operator = ( const LectureLog & unLectureLog );
+    //LectureLog & operator << ( const LectureLog & unLectureLog );
     // Mode d'emploi :
     //
     // Contrat :
@@ -44,13 +62,13 @@ public:
 
 
 //-------------------------------------------- Constructeurs - destructeur
-    LectureLog ( const LectureLog & unLectureLog );
+    //LectureLog ( const LectureLog & unLectureLog );
     // Mode d'emploi (constructeur de copie) :
     //
     // Contrat :
     //
 
-    LectureLog ( );
+    LectureLog ( Ligne l = Ligne());
     // Mode d'emploi :
     //
     // Contrat :
@@ -68,6 +86,7 @@ protected:
 //----------------------------------------------------- Méthodes protégées
 
 //----------------------------------------------------- Attributs protégés
+    Ligne ligneFichier; 
 
 };
 
