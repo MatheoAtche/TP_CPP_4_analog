@@ -23,7 +23,7 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
- int main()
+ int main(int argc, char* argv [])
 // Algorithme :
 //
 {
