@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Analog  -  description
+                           Analog  -  Classe qui teste nos programmes
                              -------------------
     début                : 21/01/2019
     copyright            : (C) Mathéo ATCHE et Andréa CROC
     e-mail               : matheo.atche@insa-lyon.fr et andrea.croc@insa-lyon.fr
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <Analog> (fichier Analog.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -17,7 +17,7 @@ using namespace std;
 #include<fstream>
 //------------------------------------------------------ Include personnel
 #include "LectureLog.h"
-
+#include "AnalyseLog.h"
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
@@ -27,11 +27,12 @@ using namespace std;
 // Algorithme :
 //
 {
-	ifstream file("/tmp/anonyme.log");
+	/*ifstream file("/tmp/anonyme.log");
 
 	LectureLog lec;
 	lec.LireLigneFichierLog(file);
-	cout<<lec;
+	cout<<lec;*/
+
 	return 0;
 	
 } //----- Fin de main

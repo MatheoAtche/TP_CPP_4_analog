@@ -1,11 +1,12 @@
 /*************************************************************************
-                           LectureLog  -  description
+                           LectureLog  -  Classe lisant une ligne d'un fichier
                              -------------------
     début                : 21/01/2019
     copyright            : (C) Mathéo ATCHE et Andréa CROC
     e-mail               : matheo.atche@insa-lyon.fr et andrea.croc@insa-lyon.fr
 *************************************************************************/
 
+//#define _CRT_SECURE_NO_WARNINGS
 //---------- Réalisation de la classe <LectureLog> (fichier LectureLog.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
@@ -25,7 +26,9 @@ const char SEP = ',';
 //----------------------------------------------------- Méthodes publiques
 void LectureLog:: LireLigneFichierLog ( ifstream & fic )
 // Algorithme :
-//
+//On récupère les informations de la ligne courante du fichier
+//donné en paramètre pour les mettre dans l'objet LectureLog
+//qui a appelé cette méthode
 {
 	string tmp;
 	getline(fic,ligneFichier.ip,' ');
@@ -46,7 +49,7 @@ void LectureLog:: LireLigneFichierLog ( ifstream & fic )
 //------------------------------------------------- Surcharge d'opérateurs
 ostream & operator << ( ostream & os, const LectureLog & lect )
 // Algorithme :
-//
+//On affiche sur le flux de sortie les attributs d'un objet LectureLog
 {
 	os<<lect.ligneFichier.ip<<SEP<<lect.ligneFichier.date<<SEP<<lect.ligneFichier.typeAction;
 	os<<SEP<<lect.ligneFichier.url<<SEP<<lect.ligneFichier.referer<<endl;
@@ -68,7 +71,7 @@ ostream & operator << ( ostream & os, const LectureLog & lect )
 
 LectureLog::LectureLog (Ligne l)
 // Algorithme :
-//
+//Initialiser l'attribut d'un objet LectureLog
 {
 	ligneFichier = l;
 
@@ -82,7 +85,7 @@ LectureLog::LectureLog (Ligne l)
 
 LectureLog::~LectureLog ( )
 // Algorithme :
-//
+//Rien à préciser
 {
 	#ifdef MAP
 	    cout << "Appel au destructeur de <LectureLog>" << endl;
