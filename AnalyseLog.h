@@ -54,10 +54,12 @@ public:
    
 
 	void GenererGraphe(bool g,string nomFichier);
-	// Mode d'emploi :
-	//
-	// Contrat :
-	//
+	// Mode d'emploi : Ecrire dans un fichier .dot pour générer
+	// un graphe représentant les requetes entre url et referer
+	//Paramètres : 
+	//		-g : contient true si l'option pour faire le graphe est mise à l'exécution
+	//		-nomFichier : est le nom du fichier .dot dans lequel on décrit le graphe
+	// Contrat : aucun
 
 	void AfficherTop10(ostream & os = cout);
 	// Mode d'emploi : Afficher les 10 documents les plus consultés

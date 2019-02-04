@@ -122,12 +122,75 @@ using namespace std;
 } //----- Fin de RemplirMap
 
  void AnalyseLog::GenererGraphe(bool g, string nomFichier)
-// Algorithme :
-//
+// Algorithme : Génerer un fichier .dot en écrivant dedans
+// la description textuelle du graphe avec comme noeud les
+// url et referer et des arcs représentant les liens entre
+//les referers et les url avec le nombre de hits sur les arcs
  {
-	 ofstream fichier(nomFichier.c_str());
+	 if (g)
+	 {
+		 //Tester si ouverture fichier ok
+		 ofstream fichier(nomFichier.c_str());
+		 fichier << "digraph {" << endl;
 
+		 //Itérateurs sur le debut et la fin de la map de map
+		 StructGraphe::const_iterator debutG, finG;
+		 debutG = graphe.begin();
+		 finG = graphe.end();
 
+		 //Itérateurs sur le début et la fin de la map avec referer et hit
+		 map<string, int>::const_iterator debR,finR;
+
+		 set<string>noeud;
+
+		 while (debutG != finG)
+		 {
+			 debR = debutG->second.first.begin();
+			 finR = debutG->second.first.end();
+			 
+			 //Si l'url n'est pas déjà un noeud
+			 if (noeud.find(debutG->first) == noeud.end())
+			 {
+				 //On représente les noeuds
+				 fichier << "      " <<debutG->first << ";" << endl;
+				 noeud.insert(debutG->first);
+			 }
+
+			 while (debR != finR)
+			 {
+				 //Si le referer n'est pas déjà un noeud
+				 if (noeud.find(debR->first)==noeud.end())
+				 {
+					 //On représente les noeuds
+					 fichier << "      " <<debR->first << ";" << endl;
+					 noeud.insert(debR->first);
+				 }
+				 debR++;
+			 }
+			 
+			 debutG++;
+		 }
+
+		 //On remet l'itérateur au début
+		 debutG = graphe.begin();
+
+		 while (debutG != finG)
+		 {
+			 debR = debutG->second.first.begin();
+			 finR = debutG->second.first.end();
+
+			 while (debR != finR)
+			 {
+				 //On décrit les liens entre url et referer
+				 fichier << "      " <<debR->first << " -> " << debutG->first << " [label=\"" << debR->second << "\"];" << endl;
+				 debR++;
+			 }
+
+			 debutG++;
+		 }
+
+		 fichier << "}" << endl;
+	 }
 
  }//----- Fin de GenererGraphe
 
