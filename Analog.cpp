@@ -15,6 +15,7 @@
 using namespace std;
 #include<string>
 #include<fstream>
+#include<unordered_set>
 //------------------------------------------------------ Include personnel
 #include "LectureLog.h"
 #include "AnalyseLog.h"
@@ -23,15 +24,15 @@ using namespace std;
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
- int main(int argc, char* argv [])
+
+int main(int argc, char* argv [])
 // Algorithme :
 //
 {
-	/*ifstream file("/tmp/anonyme.log");
-
-	LectureLog lec;
-	lec.LireLigneFichierLog(file);
-	cout<<lec;*/
+	bool g;
+	bool t;
+	bool e;
+	unordered_set<string>options{"-g","-t","-e"};
 
 	return 0;
 	

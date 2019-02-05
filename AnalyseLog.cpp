@@ -33,10 +33,10 @@ using namespace std;
 	//ne souhaite pas si l'option e est true
 	set<string>Suffixe {"php","css","jpg","gif","ico","png","jpeg","ics"};
 	
-	LectureLog lect;
-	bool check=true;; 
+	LectureLog lect; 
 	while(!file.eof())
 	{
+		bool check=true;
 		lect.LireLigneFichierLog(file);
 		if(e)
 		{
@@ -45,7 +45,6 @@ using namespace std;
 			string suf;
 			if(pos!=-1)
 			{	//On recupère la chaine de caracteres qui se trouve après le point
-				//suf=substr(lect.ligneFichier.url,pos+1);
 				suf = lect.ligneFichier.url.substr(pos + 1);
 
 				//Si l'extension du document est dans Suffixe
@@ -59,7 +58,6 @@ using namespace std;
 			
 		if(t && check)	
 		{
-			//int h = atoi(substr(lect.ligneFichier.date,12,2));
 			int h = atoi(lect.ligneFichier.date.substr(12, 2).c_str());
 			//Si l'heure de la requête ne correspond pas à celle attendue
 			if(h!=heure)
