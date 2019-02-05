@@ -29,19 +29,19 @@ int main(int argc, char* argv [])
 // Algorithme :
 //
 {
-	bool bg;
-	bool bt;
-	bool be;
-	int g;
-	int t;
-	int e;
+	bool erreur=false;
+	bool g;
+	bool t;
+	bool e;
+	int h=0;
+	string outFile="";
 	if (argc==1)
 		cout << "Erreur, pas de fichier '.log' indiqué\n";
 	else if (argc==2)
 	{
 		string fic = argv[1];
-		int n=fic.find_last_of(".");
-		if (n>=0 && fic.substr(n)==".log")
+		int n=fic.find(".log");
+		if (n>0)
 		{
 			try
 			{
@@ -50,11 +50,13 @@ int main(int argc, char* argv [])
 			catch (const char* message)
 			{
 				cout << message;
+				erreur=true;
 			}
 		}
 		else
 		{
 			cout<< "Erreur, ce n'est pas un fichier .log\n";
+			erreur=true;
 		}
 	}
 	else
@@ -64,24 +66,51 @@ int main(int argc, char* argv [])
 		{
 			if (strcmp(argv[i],"-g")==0)
 			{
-				bg=true;
-				g=i;
-				if (i<argc-1)
+				g=true;
+				if (i<argc-2)
 				{
-					string outFile = argv[i+1];
+					outFile = argv[i+1];
 				}
-				else
-					cout << "Erreur, pas de fichier .dot indiqué\n";
+				int n=outFile.find(".dot");
+				if(outFile=="-e" || outFile=="-t")
+				{
+					cout << "Erreur, aucun fichier indiqué après l'option -g\n";
+					erreur=true;
+					break;
+				}
+				if(n<0)
+				{
+					cout << "Erreur, Le fichier indiqué suite à l'option -g n'est pas un .dot\n";
+					erreur=true;
+					break;
+				}
+				i++;
 			}
-			if (strcmp(argv[i],"-t")==0)
+			else if (strcmp(argv[i],"-t")==0)
 			{
-				bt=true;
-				t=i;
+				t=true;
+				if (i<argc-2)
+					h=atoi(argv[i+1]);
+				if(h>24 || h<0)
+				{
+					cout << "Erreur, l'heure n'est pas valide\n";
+					erreur=true;
+					break;
+				}
 			}
-			if (strcmp(argv[i],"-e")==0)
+			else if (strcmp(argv[i],"-e")==0)
 			{
-				be=true;
-				e=i;
+				e=true;
+				if (i<argc-2 && strcmp(argv[i+1],"-g")!=0 && strcmp(argv[i+1],"-t")!=0)
+				{
+					cout << "Erreur, des paramètres inutiles ont été détectés\n";
+					erreur=true;
+				}
+			}
+			else 
+			{
+				cout << "Erreur, l'option n'existe pas\n";
+				erreur=true;
 			}
 		}
 	}
@@ -91,7 +120,4 @@ int main(int argc, char* argv [])
 	return 0;
 	
 } //----- Fin de main
-
-
-
 
