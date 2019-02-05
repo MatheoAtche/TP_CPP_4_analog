@@ -154,7 +154,7 @@ using namespace std;
 			 {
 				 //On représente les noeuds
 				 fichier << "node" <<compteur<<" [label=\""<<debutG->first << "\"];" << endl;
-				 node.insert(make_pair(debutG->first,compteur);
+				 node.insert(make_pair(debutG->first,compteur));
 				 compteur++;
 			 }
 
@@ -165,7 +165,7 @@ using namespace std;
 				 {
 					 //On représente les noeuds
 					 fichier << "node" <<compteur<<" [label=\""<<debR->first << "\"];" << endl;
-					 node.insert(make_pair(debR->first,compteur);
+					 node.insert(make_pair(debR->first,compteur));
 					 compteur++;
 				 }
 				 debR++;
@@ -184,9 +184,9 @@ using namespace std;
 
 			 while (debR != finR)
 			 {
+
 				 //On décrit les liens entre url et referer
-				 //fichier << "      " <<debR->first << " -> " << debutG->first << " [label=\"" << debR->second << "\"];" << endl;
-				 fichier<<"node"<<node.find(debR->first).second<<" -> "<<"node"<<node.find(debutG->first).second<<" [label=\""<<debR->second<<"\"];" << endl;
+				 fichier<<"node"<<node.find(debR->first)->second<<" -> "<<"node"<<node.find(debutG->first)->second<<" [label=\""<<debR->second<<"\"];" << endl;
 				 debR++;
 			 }
 
@@ -260,9 +260,9 @@ AnalyseLog::AnalyseLog (ifstream & fic,bool g, bool e, bool t, string nomFic,int
 // Algorithme :
 //
 {
-	file=fic;
+	&file=*fic;
 	RemplirMap(e,t,heure);
-	//GenererGraphe(g, nomFic);
+	GenererGraphe(g,nomFic);
 	AfficherTop10();
 
 	#ifdef MAP

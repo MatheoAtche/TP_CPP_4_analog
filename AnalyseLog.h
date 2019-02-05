@@ -85,7 +85,7 @@ public:
     // Contrat :
     //
 
-    AnalyseLog (ifstream & fic, bool g, bool e, bool t, string nomFic,int heure);
+    AnalyseLog (ifstream & fic, bool g=false, bool e=false, bool t=false, string nomFic="",int heure=0);
     // Mode d'emploi : Construit un AnalyseLog en remplissant la map suivant
     //les options en appelant la méthode RemplirMap
 	//Paramètres : 
