@@ -15,7 +15,7 @@
 using namespace std;
 #include<string>
 #include<fstream>
-#include<strcmp>
+#include<cstring>
 //------------------------------------------------------ Include personnel
 #include "LectureLog.h"
 #include "AnalyseLog.h"
@@ -39,7 +39,19 @@ int main(int argc, char* argv [])
 		cout << "Erreur, pas de fichier '.log' indiqué\n";
 	else if (argc==2)
 	{
-
+		string fic = argv[2];
+		if (fic.substr(fic.find_last_of('.'))==".log")
+		{
+			ifstream file(fic);
+			if (!file)
+				cout << "Erreur, le fichier indiqué n'esxiste pas ou n'est pas accessible en lecture\n";
+			else
+				AnalyseLog a = AnalyseLog (&fic);
+		}
+		else
+		{
+			"Erreur, ce n'est pas un fichier .log\n";
+		}
 	}
 	else
 	{
