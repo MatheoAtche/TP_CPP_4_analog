@@ -263,7 +263,7 @@ AnalyseLog::AnalyseLog (string fic,bool g, bool e, bool t, string nomFic,int heu
 	file.open(fic);
 	while (!file)
 	{
-		cout<<"Erreur, le fichier log indiqué n'existe pas ou n'est pas accessible en lecture\n";
+		throw "Erreur, le fichier log indiqué n'existe pas ou n'est pas accessible en lecture\n";
 	}
 	RemplirMap(e,t,heure);
 	GenererGraphe(g,nomFic);

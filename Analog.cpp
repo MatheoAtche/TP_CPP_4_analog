@@ -40,13 +40,21 @@ int main(int argc, char* argv [])
 	else if (argc==2)
 	{
 		string fic = argv[1];
-		if (fic.substr(fic.find_last_of('.'))==".log")
+		int n=fic.find_last_of(".");
+		if (n>=0 && fic.substr(n)==".log")
 		{
-			AnalyseLog a (fic);
+			try
+			{
+				AnalyseLog a (fic);
+			}
+			catch (const char* message)
+			{
+				cout << message;
+			}
 		}
 		else
 		{
-			"Erreur, ce n'est pas un fichier .log\n";
+			cout<< "Erreur, ce n'est pas un fichier .log\n";
 		}
 	}
 	else
