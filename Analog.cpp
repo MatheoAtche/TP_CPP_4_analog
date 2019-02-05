@@ -15,6 +15,7 @@
 using namespace std;
 #include<string>
 #include<fstream>
+#include<strcmp>
 //------------------------------------------------------ Include personnel
 #include "LectureLog.h"
 #include "AnalyseLog.h"
@@ -28,14 +29,46 @@ int main(int argc, char* argv [])
 // Algorithme :
 //
 {
-	bool g;
-	bool t;
-	bool e;
-	AnalyseLog a ("./anonyme.log");
+	bool bg;
+	bool bt;
+	bool be;
+	int g;
+	int t;
+	int e;
 	if (argc==1)
+		cout << "Erreur, pas de fichier '.log' indiqué\n";
+	else if (argc==2)
 	{
-	}
 
+	}
+	else
+	{
+	//parcours des options
+		for (int i=1; i<argc-1; i++)
+		{
+			if (strcmp(argv[i],"-g")==0)
+			{
+				bg=true;
+				g=i;
+				if (i<argc-1)
+				{
+					string outFile = argv[i+1];
+				}
+				else
+					cout << "Erreur, pas de fichier .dot indiqué\n";
+			}
+			if (strcmp(argv[i],"-t")==0)
+			{
+				bt=true;
+				t=i;
+			}
+			if (strcmp(argv[i],"-e")==0)
+			{
+				be=true;
+				e=i;
+			}
+		}
+	}
 
 	return 0;
 	
