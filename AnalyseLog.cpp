@@ -5,7 +5,6 @@
     copyright            : (C) Mathéo ATCHE et Andréa CROC
     e-mail               : matheo.atche@insa-lyon.fr et andrea.croc@insa-lyon.fr
 *************************************************************************/
-//#define _CRT_SECURE_NO_WARNINGS
 
 //---------- Réalisation de la classe <AnalyseLog> (fichier AnalyseLog.cpp) ------------
 
@@ -139,7 +138,11 @@ using namespace std;
 		 //Itérateurs sur le début et la fin de la map avec referer et hit
 		 map<string, int>::const_iterator debR,finR;
 
-		 set<string>noeud;
+		 //Map contenant le nom de l'url ou referer et le numéro du noeud
+		 map<string,int>node;
+
+		 //Numéro des noeuds		
+		 int compteur=0;
 
 		 while (debutG != finG)
 		 {
@@ -147,21 +150,23 @@ using namespace std;
 			 finR = debutG->second.first.end();
 			 
 			 //Si l'url n'est pas déjà un noeud
-			 if (noeud.find(debutG->first) == noeud.end())
+			 if (node.find(debutG->first) == node.end())
 			 {
 				 //On représente les noeuds
-				 fichier << "      " <<debutG->first << ";" << endl;
-				 noeud.insert(debutG->first);
+				 fichier << "node" <<compteur<<" [label=\""<<debutG->first << "\"];" << endl;
+				 node.insert(make_pair(debutG->first,compteur);
+				 compteur++;
 			 }
 
 			 while (debR != finR)
 			 {
 				 //Si le referer n'est pas déjà un noeud
-				 if (noeud.find(debR->first)==noeud.end())
+				 if (node.find(debR->first)==node.end())
 				 {
 					 //On représente les noeuds
-					 fichier << "      " <<debR->first << ";" << endl;
-					 noeud.insert(debR->first);
+					 fichier << "node" <<compteur<<" [label=\""<<debR->first << "\"];" << endl;
+					 node.insert(make_pair(debR->first,compteur);
+					 compteur++;
 				 }
 				 debR++;
 			 }
@@ -180,7 +185,8 @@ using namespace std;
 			 while (debR != finR)
 			 {
 				 //On décrit les liens entre url et referer
-				 fichier << "      " <<debR->first << " -> " << debutG->first << " [label=\"" << debR->second << "\"];" << endl;
+				 //fichier << "      " <<debR->first << " -> " << debutG->first << " [label=\"" << debR->second << "\"];" << endl;
+				 fichier<<"node"<<node.find(debR->first).second<<" -> "<<"node"<<node.find(debutG->first).second<<" [label=\""<<debR->second<<"\"];" << endl;
 				 debR++;
 			 }
 
@@ -250,13 +256,11 @@ using namespace std;
 } *///----- Fin de AnalyseLog (constructeur de copie)
 
 
-//AnalyseLog::AnalyseLog (ifstream & fic,bool g, bool e, bool t, string nomFic,int heure)
-AnalyseLog::AnalyseLog(string fic, bool g, bool e, bool t, string nomFic, int heure)
+AnalyseLog::AnalyseLog (ifstream & fic,bool g, bool e, bool t, string nomFic,int heure)
 // Algorithme :
 //
 {
-	//file=fic;
-	file.open(fic.c_str());
+	file=fic;
 	RemplirMap(e,t,heure);
 	//GenererGraphe(g, nomFic);
 	AfficherTop10();

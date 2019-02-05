@@ -85,12 +85,11 @@ public:
     // Contrat :
     //
 
-    //AnalyseLog (ifstream & fic, bool g, bool e, bool t, string nomFic,int heure);
-	AnalyseLog(string fic, bool g = false, bool e = false, bool t = false, string nomFic = "", int heure = 0);
+    AnalyseLog (ifstream & fic, bool g, bool e, bool t, string nomFic,int heure);
     // Mode d'emploi : Construit un AnalyseLog en remplissant la map suivant
     //les options en appelant la méthode RemplirMap
 	//Paramètres : 
-	//		-fic est le nom du fichier log Apache que l'on veut analyser
+	//		-fic est le fichier log Apache que l'on veut analyser
 	//		-g vaut true si cette option de générer un graphe a été mise à l'exécution
 	//		-e : contient true si l'option de séléction des documents
 	//suivant leur extension a été écrite à l'exécution
