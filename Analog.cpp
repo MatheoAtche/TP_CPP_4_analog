@@ -15,7 +15,6 @@
 using namespace std;
 #include<string>
 #include<fstream>
-#include<unordered_set>
 //------------------------------------------------------ Include personnel
 #include "LectureLog.h"
 #include "AnalyseLog.h"
@@ -32,7 +31,11 @@ int main(int argc, char* argv [])
 	bool g;
 	bool t;
 	bool e;
-	unordered_set<string>options{"-g","-t","-e"};
+	AnalyseLog a ("./anonyme.log");
+	if (argc==1)
+	{
+	}
+
 
 	return 0;
 	
