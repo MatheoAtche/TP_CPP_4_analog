@@ -37,9 +37,19 @@ void LectureLog:: LireLigneFichierLog ( ifstream & fic )
 	getline(fic,tmp,'"');
 	getline(fic,ligneFichier.typeAction,' ');
 	getline(fic,ligneFichier.url,' ');
+	int pos1 = ligneFichier.url.substr(0,31).find("intranet-if");
+	if(pos1!=-1)
+	{
+		ligneFichier.url.erase(0,31);
+	}
 	getline(fic,tmp,'"');
 	getline(fic,tmp,'"');
 	getline(fic,ligneFichier.referer,'"');
+	int pos2 = ligneFichier.referer.substr(0,31).find("intranet-if");
+	if(pos2!=-1)
+	{
+		ligneFichier.referer.erase(0,31);
+	}
 	getline(fic,tmp);
 	
 	

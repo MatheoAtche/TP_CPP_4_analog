@@ -86,6 +86,8 @@ int main(int argc, char* argv [])
 		}
 	}
 
+	//AnalyseLog a("/home/acroc/Documents/TP_CPP_4_analog-master3/anonyme.log",true,false,false,"court.dot");
+
 	return 0;
 	
 } //----- Fin de main
