@@ -3,9 +3,9 @@ EDL = g++
 EXE = Analog
 COMP = g++ -c 
 
-DEC = LectureLog.h
-DEF = LectureLog.cpp 
-OBJ = LectureLog.o 
+DEC = LectureLog.h AnalyseLog.h
+DEF = LectureLog.cpp AnalyseLog.cpp
+OBJ = LectureLog.o AnalyseLog.o
 
 LIBS = -lm 
 CPPFLAGS = -ansi -pedantic -Wall -std=c++11 $(P) -g -DMAP
