@@ -40,12 +40,13 @@ using namespace std;
 		if(e)
 		{
 			//On recupère la position du point
-			int pos=lect.ligneFichier.url.find_last_of('.',0);
+			int pos=lect.ligneFichier.url.find_last_of(".");
+			//cout << pos;
 			string suf;
 			if(pos!=-1)
 			{	//On recupère la chaine de caracteres qui se trouve après le point
 				suf = lect.ligneFichier.url.substr(pos + 1);
-
+				//cout << suf << endl;
 				//Si l'extension du document est dans Suffixe
 				if(Suffixe.find(suf)!=Suffixe.end())
 				{

@@ -25,6 +25,20 @@ using namespace std;
 
 //----------------------------------------------------- Méthodes publiques
 
+bool checkNumber (char* str)
+{
+	int t = strlen(str);
+	bool check=true;
+	for (int i=0; i<t; i++)
+	{
+		if(!isdigit(str[i]))
+		{
+			check=false;
+		}
+	}
+	return check;
+}
+
 int main(int argc, char* argv [])
 // Algorithme :
 //
@@ -67,10 +81,7 @@ int main(int argc, char* argv [])
 			if (strcmp(argv[i],"-g")==0)
 			{
 				g=true;
-				if (i<argc-2)
-				{
-					outFile = argv[i+1];
-				}
+				outFile = argv[i+1];
 				int n=outFile.find(".dot");
 				if(outFile=="-e" || outFile=="-t")
 				{
@@ -89,14 +100,14 @@ int main(int argc, char* argv [])
 			else if (strcmp(argv[i],"-t")==0)
 			{
 				t=true;
-				if (i<argc-2)
-					h=atoi(argv[i+1]);
-				if(h>24 || h<0)
+				h=atoi(argv[i+1]);
+				if (!checkNumber(argv[i+1]) || h<0 || h>24)
 				{
-					cout << "Erreur, l'heure n'est pas valide\n";
-					erreur=true;
+					cout << "Erreur, indiquez une heure valide après l'option -t\n";
+					erreur = true;
 					break;
 				}
+				i++;
 			}
 			else if (strcmp(argv[i],"-e")==0)
 			{
@@ -105,18 +116,35 @@ int main(int argc, char* argv [])
 				{
 					cout << "Erreur, des paramètres inutiles ont été détectés\n";
 					erreur=true;
+					break;
 				}
 			}
 			else 
 			{
 				cout << "Erreur, l'option n'existe pas\n";
 				erreur=true;
+				break;
 			}
 		}
+		if(!erreur)
+		{
+			string fic = argv[argc-1];
+			int n=fic.find(".log");
+			if (n>0)
+			{
+				try
+				{
+					AnalyseLog a (fic, g, e, t, outFile, h);
+				}
+				catch (const char* message)
+				{
+					cout << message;
+				}
+			}
+			else
+				cout<< "Erreur, ce n'est pas un fichier .log\n";
+		}
 	}
-
-	//AnalyseLog a("/home/acroc/Documents/TP_CPP_4_analog-master3/anonyme.log",true,false,false,"court.dot");
-
 	return 0;
 	
 } //----- Fin de main

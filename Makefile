@@ -8,7 +8,7 @@ DEF = LectureLog.cpp AnalyseLog.cpp
 OBJ = LectureLog.o AnalyseLog.o
 
 LIBS = -lm 
-CPPFLAGS = -ansi -pedantic -Wall -std=c++11 $(P) -g -DMAP
+CPPFLAGS = -ansi -pedantic -Wall -std=c++11 $(P) -g
 
 $(EXE) : $(OBJ) $(EXE).o
 	@$(ECHO) "Edl de <main>"
