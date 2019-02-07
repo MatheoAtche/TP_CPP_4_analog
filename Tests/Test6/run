@@ -1,1 +1,1 @@
-./analog -g out.dot -e /tmp/anonyme.log
+./Analog -g out.dot -e test.log
