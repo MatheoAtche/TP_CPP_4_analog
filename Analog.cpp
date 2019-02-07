@@ -95,6 +95,27 @@ int main(int argc, char* argv [])
 					erreur=true;
 					break;
 				}
+				ifstream fic(outFile.c_str());
+				if(fic)
+				{
+					string choix;
+					cout<<"Le fichier existe déjà, le contenu sera écrasé."<<endl;
+					cout<<"Voulez-vous continuer? Oui/Non : ";
+					cin>>choix;
+					cout<<endl;
+					while(choix!="Oui" && choix!="Non")
+					{	
+						cout<<"Voulez-vous continuer? Oui/Non : ";
+						cin>>choix;
+						cout<<endl;
+					}
+					if(choix=="Non")
+					{
+						cerr <<"Fermeture du programme"<<endl;
+						erreur=true;
+						break;
+					}
+				}
 				i++;
 			}
 			else if (strcmp(argv[i],"-t")==0)
