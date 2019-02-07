@@ -1,1 +1,2 @@
-./analog
+./Analog -g out.dot test.log
+Non
