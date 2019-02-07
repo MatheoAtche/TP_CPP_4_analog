@@ -197,6 +197,8 @@ using namespace std;
 		 fichier << "}" << endl;
 	 }
 
+	 cout << "Dot-file " << nomFichier << " generated" << endl;
+
  }//----- Fin de GenererGraphe
 
  void AnalyseLog ::AfficherTop10(ostream & os)
