@@ -1,1 +1,1 @@
-./Analog -e inutile ./test.log
+../Analog -e inutile ../test.log

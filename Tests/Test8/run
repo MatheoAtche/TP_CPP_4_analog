@@ -1,1 +1,1 @@
-./Analog -e -g out.dot -t 12 test.log
+../Analog -e -g out.dot -t 12 ../test.log

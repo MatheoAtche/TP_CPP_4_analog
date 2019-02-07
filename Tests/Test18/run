@@ -1,1 +1,1 @@
-./Analog -t midi ./test.log
+../Analog -t midi ../test.log

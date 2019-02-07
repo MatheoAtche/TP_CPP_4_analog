@@ -1,1 +1,1 @@
-./Analog -e test.log
+../Analog -e ../test.log
