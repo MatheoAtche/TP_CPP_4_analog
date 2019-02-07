@@ -63,7 +63,7 @@ int main(int argc, char* argv [])
 			}
 			catch (const char* message)
 			{
-				cerr << message;
+				cerr << message << endl;
 				erreur=true;
 			}
 		}
@@ -144,11 +144,11 @@ int main(int argc, char* argv [])
 				}
 				catch (const char* message)
 				{
-					cout << message;
+					cerr << message << endl;
 				}
 			}
 			else
-				cerr << "Erreur, ce n'est pas un fichier .log\n";
+				cerr << "Erreur, ce n'est pas un fichier .log" << endl;
 		}
 	}
 	return 0;

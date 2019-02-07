@@ -264,7 +264,7 @@ AnalyseLog::AnalyseLog (string fic,bool g, bool e, bool t, string nomFic,int heu
 	file.open(fic);
 	while (!file)
 	{
-		throw "Erreur, le fichier log indiqué n'existe pas ou n'est pas accessible en lecture"  << endl;
+		throw "Erreur, le fichier log indiqué n'existe pas ou n'est pas accessible en lecture";
 	}
 	RemplirMap(e,t,heure);
 	GenererGraphe(g,nomFic);
