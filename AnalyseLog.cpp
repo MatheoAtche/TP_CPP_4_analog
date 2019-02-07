@@ -195,9 +195,9 @@ using namespace std;
 		 }
 
 		 fichier << "}" << endl;
+		 
+		 cout << "Dot-file " << nomFichier << " generated" << endl;
 	 }
-
-	 cout << "Dot-file " << nomFichier << " generated" << endl;
 
  }//----- Fin de GenererGraphe
 
