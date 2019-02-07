@@ -50,7 +50,7 @@ int main(int argc, char* argv [])
 	int h=0;
 	string outFile="";
 	if (argc==1)
-		cout << "Erreur, pas de fichier '.log' indiqué\n";
+		cerr << "Erreur, pas de fichier '.log' indiqué" << endl;
 	else if (argc==2)
 	{
 		string fic = argv[1];
@@ -63,13 +63,13 @@ int main(int argc, char* argv [])
 			}
 			catch (const char* message)
 			{
-				cout << message;
+				cerr << message;
 				erreur=true;
 			}
 		}
 		else
 		{
-			cout<< "Erreur, ce n'est pas un fichier .log\n";
+			cerr << "Erreur, ce n'est pas un fichier .log" << endl;
 			erreur=true;
 		}
 	}
@@ -85,13 +85,13 @@ int main(int argc, char* argv [])
 				int n=outFile.find(".dot");
 				if(outFile=="-e" || outFile=="-t")
 				{
-					cout << "Erreur, aucun fichier indiqué après l'option -g\n";
+					cerr << "Erreur, aucun fichier indiqué après l'option -g" << endl;
 					erreur=true;
 					break;
 				}
 				if(n<0)
 				{
-					cout << "Erreur, Le fichier indiqué suite à l'option -g n'est pas un .dot\n";
+					cerr << "Erreur, Le fichier indiqué suite à l'option -g n'est pas un .dot" << endl;
 					erreur=true;
 					break;
 				}
@@ -103,8 +103,14 @@ int main(int argc, char* argv [])
 				h=atoi(argv[i+1]);
 				if (!checkNumber(argv[i+1]) || h<0 || h>24)
 				{
-					cout << "Erreur, indiquez une heure valide après l'option -t\n";
+					cerr << "Erreur, indiquez une heure valide après l'option -t" << endl;
 					erreur = true;
+					break;
+				}
+				if (i>=argc-2 || strcmp(argv[i+1],"-g")==0 || strcmp(argv[i+1],"-e")==0)
+				{
+					cerr << "Erreur, pas d'heure indiqueé après l'option -t" << endl;
+					erreur =true;
 					break;
 				}
 				i++;
@@ -114,14 +120,14 @@ int main(int argc, char* argv [])
 				e=true;
 				if (i<argc-2 && strcmp(argv[i+1],"-g")!=0 && strcmp(argv[i+1],"-t")!=0)
 				{
-					cout << "Erreur, des paramètres inutiles ont été détectés\n";
+					cerr << "Erreur, des paramètres inutiles ont été détecté" << endl;
 					erreur=true;
 					break;
 				}
 			}
 			else 
 			{
-				cout << "Erreur, l'option n'existe pas\n";
+				cerr << "Erreur, l'option n'existe pas" << endl;
 				erreur=true;
 				break;
 			}
@@ -142,7 +148,7 @@ int main(int argc, char* argv [])
 				}
 			}
 			else
-				cout<< "Erreur, ce n'est pas un fichier .log\n";
+				cerr << "Erreur, ce n'est pas un fichier .log\n";
 		}
 	}
 	return 0;

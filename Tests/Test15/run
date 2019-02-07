@@ -1,1 +1,1 @@
-./analog -e test /tmp/anonyme.log
+./Analog -e inutile ./test.log
