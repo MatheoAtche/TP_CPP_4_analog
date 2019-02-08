@@ -83,7 +83,7 @@ int main(int argc, char* argv [])
 				g=true;
 				outFile = argv[i+1];
 				int n=outFile.find(".dot");
-				if(outFile=="-e" || outFile=="-t")
+				if(outFile=="-e" || outFile=="-t" || i==argc-2)
 				{
 					cerr << "Erreur, aucun fichier indiqué après l'option -g" << endl;
 					erreur=true;
@@ -91,7 +91,7 @@ int main(int argc, char* argv [])
 				}
 				if(n<0)
 				{
-					cerr << "Erreur, Le fichier indiqué suite à l'option -g n'est pas un .dot" << endl;
+					cerr << "Erreur, le fichier indiqué suite à l'option -g n'est pas un .dot" << endl;
 					erreur=true;
 					break;
 				}
