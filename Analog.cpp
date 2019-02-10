@@ -50,7 +50,11 @@ int main(int argc, char* argv [])
 	int h=0;
 	string outFile="";
 	if (argc==1)
+	{
 		cerr << "Erreur, pas de fichier '.log' indiqué" << endl;
+		erreur = true;
+		return 1;
+	}
 	else if (argc==2)
 	{
 		string fic = argv[1];
@@ -124,16 +128,16 @@ int main(int argc, char* argv [])
 			{
 				t=true;
 				h=atoi(argv[i+1]);
+				if (i>=argc-2 || strcmp(argv[i+1],"-g")==0 || strcmp(argv[i+1],"-e")==0)
+				{
+					cerr << "Erreur, pas d'heure indiquée après l'option -t" << endl;
+					erreur =true;
+					return 1;
+				}
 				if (!checkNumber(argv[i+1]) || h<0 || h>24)
 				{
 					cerr << "Erreur, indiquez une heure valide après l'option -t" << endl;
 					erreur = true;
-					return 1;
-				}
-				if (i>=argc-2 || strcmp(argv[i+1],"-g")==0 || strcmp(argv[i+1],"-e")==0)
-				{
-					cerr << "Erreur, pas d'heure indiqueé après l'option -t" << endl;
-					erreur =true;
 					return 1;
 				}
 				i++;
