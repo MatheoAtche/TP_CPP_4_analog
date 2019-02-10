@@ -65,12 +65,14 @@ int main(int argc, char* argv [])
 			{
 				cerr << message << endl;
 				erreur=true;
+				return 1;
 			}
 		}
 		else
 		{
 			cerr << "Erreur, ce n'est pas un fichier .log" << endl;
 			erreur=true;
+			return 1;
 		}
 	}
 	else
@@ -87,13 +89,13 @@ int main(int argc, char* argv [])
 				{
 					cerr << "Erreur, aucun fichier indiqué après l'option -g" << endl;
 					erreur=true;
-					break;
+					return 1;
 				}
 				if(n<0)
 				{
 					cerr << "Erreur, le fichier indiqué suite à l'option -g n'est pas un .dot" << endl;
 					erreur=true;
-					break;
+					return 1;
 				}
 				ifstream fic(outFile.c_str());
 				if(fic)
@@ -113,7 +115,7 @@ int main(int argc, char* argv [])
 					{
 						cerr <<"Fermeture du programme"<<endl;
 						erreur=true;
-						break;
+						return 1;
 					}
 				}
 				i++;
@@ -126,13 +128,13 @@ int main(int argc, char* argv [])
 				{
 					cerr << "Erreur, indiquez une heure valide après l'option -t" << endl;
 					erreur = true;
-					break;
+					return 1;
 				}
 				if (i>=argc-2 || strcmp(argv[i+1],"-g")==0 || strcmp(argv[i+1],"-e")==0)
 				{
 					cerr << "Erreur, pas d'heure indiqueé après l'option -t" << endl;
 					erreur =true;
-					break;
+					return 1;
 				}
 				i++;
 			}
@@ -143,14 +145,14 @@ int main(int argc, char* argv [])
 				{
 					cerr << "Erreur, des paramètres inutiles ont été détecté" << endl;
 					erreur=true;
-					break;
+					return 1;
 				}
 			}
 			else 
 			{
 				cerr << "Erreur, l'option n'existe pas" << endl;
 				erreur=true;
-				break;
+				return 1;
 			}
 		}
 		if(!erreur)
